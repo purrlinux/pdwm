@@ -1,6 +1,6 @@
 pkgname=pdwm
-pkgver=1.5
-pkgrel=1
+pkgver=1.0
+pkgrel=15
 pkgdesc="Minimalist dynamic window manager setup"
 arch=('x86_64')
 url="https://github.com/purrlinux/pdwm"
@@ -47,4 +47,6 @@ Comment=Dynamic Window Manager
 Exec=dwm
 Type=Application
 X-LightDM-Session=true") "$pkgdir/usr/share/xsessions/dwm.desktop"
+
+    chmod u+s "$pkgdir/usr/bin/slock"
 }
