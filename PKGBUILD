@@ -40,9 +40,9 @@ package() {
     install -Dm644 st-0.9.2/st.1 "$pkgdir/usr/share/man/man1/st.1"
 
     install -Dm644 <(echo "[Desktop Entry]
-    Name=DWM
-    Comment=Dynamic Window Manager
-    Exec=dwm
-    Type=Application
-    X-LightDM-Session=true") "$pkgdir/usr/share/xsessions/dwm.desktop"
+Name=DWM
+Comment=Dynamic Window Manager
+Exec=dwm
+Type=Application
+X-LightDM-Session=true") "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
