@@ -24,7 +24,8 @@ package() {
     cd pdwm
 
     install -Dm755 dwm-6.5/dwm "$pkgdir/usr/bin/dwm"
-    install -Dm755 dmenu-5.3/dmenu "$pkgdir/usr/bin/dmenu"
+    install -Dm755 dmenu-5.3/dmenu_path "$pkgdir/usr/bin/dmenu_path"
+    install -Dm755 dmenu-5.3/dmenu_run "$pkgdir/usr/bin/dmenu_run"
     install -Dm755 slock-1.5/slock "$pkgdir/usr/bin/slock"
     install -Dm755 slstatus-1.0/slstatus "$pkgdir/usr/bin/slstatus"
     install -Dm755 st-0.9.2/st "$pkgdir/usr/bin/st"
