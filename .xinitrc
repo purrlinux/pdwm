@@ -1,5 +1,5 @@
 #!/bin/sh
 
-feh --bg-scale /usr/share/pdwm/wallpaper.png & disown
+feh --bg-fill /usr/share/pdwm/wallpaper.png & disown
 slstatus & disown
 exec dwm
