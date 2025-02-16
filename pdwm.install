@@ -1,32 +1,25 @@
 post_install() {
-    # Определяем исходного пользователя
     if [ -n "$DOAS_USER" ]; then
         USER_NAME="$DOAS_USER"
     elif [ -n "$SUDO_USER" ]; then
         USER_NAME="$SUDO_USER"
     else
-        # Пытаемся определить через who или logname
         USER_NAME=$( (logname || who -m | awk '{print $1}') 2>/dev/null )
     fi
 
-    # Проверяем, что пользователь не root
     if [ "$USER_NAME" = "root" ] || [ -z "$USER_NAME" ]; then
-        echo "Не удалось определить пользователя. Скопируйте файлы из /usr/share/pdwm/skel вручную."
+        echo "Couldn't identify the user. Copy the files from /usr/share/pdwm/skel manually."
         return 1
     fi
 
     USER_HOME=$(eval echo ~$USER_NAME)
-    echo "Копирование файлов конфигурации в домашнюю директорию $USER_HOME..."
+    echo "Copying configuration files to the $USER_HOME home directory..."
 
-    # Копируем .dwm и .xinitrc
     mkdir -p "$USER_HOME/.dwm"
     cp -r /usr/share/pdwm/skel/.dwm/* "$USER_HOME/.dwm/"
-    cp /usr/share/pdwm/skel/.xinitrc "$USER_HOME/"
 
-    # Права владельца
     chown -R $USER_NAME:$USER_NAME "$USER_HOME/.dwm"
-    chown $USER_NAME:$USER_NAME "$USER_HOME/.xinitrc"
-    echo "Готово! Файлы скопированы в $USER_HOME."
+    echo "Done! The files are copied to $USER_HOME."
 }
 
 post_upgrade() {
