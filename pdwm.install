@@ -1,4 +1,4 @@
-_post_actions() {
+post_install() {
     if [ -n "$DOAS_USER" ]; then
         USER_NAME="$DOAS_USER"
     elif [ -n "$SUDO_USER" ]; then
@@ -13,25 +13,16 @@ _post_actions() {
     fi
 
     USER_HOME=$(eval echo ~$USER_NAME)
+    echo "Copying configuration files to the $USER_HOME home directory..."
 
     mkdir -p "$USER_HOME/.dwm"
-    cp -n "/usr/share/pdwm/skel/.dwm/autostart.sh" "$USER_HOME/.dwm/"
-}
+    cp -r /usr/share/pdwm/skel/.dwm/autostart.sh "$USER_HOME/.dwm/"
+    chmod +x "$USER_HOME/.dwm/autostart.sh"
 
-post_install() {
-    _post_actions
+    chown -R $USER_NAME:$USER_NAME "$USER_HOME/.dwm"
+    echo "Done! The files are copied to $USER_HOME."
 }
 
 post_upgrade() {
-    _post_actions
-}
-
-pre_remove() {
-    if [[ " ${PACMAN_OPTS[@]} " =~ " -Rn " || " ${PACMAN_OPTS[@]} " =~ " -Rns " ]]; then
-        USER_NAME=$( (logname || who -m | awk '{print $1}') 2>/dev/null )
-        USER_HOME=$(eval echo ~$USER_NAME)
-
-        echo "Удаление конфигураций из $USER_HOME..."
-        rm -f "$USER_HOME/.dwm/autostart.sh"
-    fi
+    post_install
 }
