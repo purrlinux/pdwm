@@ -16,7 +16,8 @@ post_install() {
     echo "Copying configuration files to the $USER_HOME home directory..."
 
     mkdir -p "$USER_HOME/.dwm"
-    cp -r /usr/share/pdwm/skel/.dwm/* "$USER_HOME/.dwm/"
+    cp -r /usr/share/pdwm/skel/.dwm/autostart.sh "$USER_HOME/.dwm/"
+    chmod +x "$USER_HOME/.dwm/autostart.sh"
 
     chown -R $USER_NAME:$USER_NAME "$USER_HOME/.dwm"
     echo "Done! The files are copied to $USER_HOME."

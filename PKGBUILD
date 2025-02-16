@@ -1,6 +1,6 @@
 pkgname=pdwm
 pkgver=1.0
-pkgrel=16
+pkgrel=20
 pkgdesc="Minimalist dynamic window manager setup"
 arch=('x86_64')
 url="https://github.com/purrlinux/pdwm"
