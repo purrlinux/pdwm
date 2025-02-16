@@ -1,6 +1,6 @@
 pkgname=pdwm
 pkgver=1.0
-pkgrel=15
+pkgrel=16
 pkgdesc="Minimalist dynamic window manager setup"
 arch=('x86_64')
 url="https://github.com/purrlinux/pdwm"
@@ -9,6 +9,7 @@ depends=('xorg-server' 'xorg-xrandr' 'xorg-xsetroot' 'xorg-xinit' 'feh' 'adobe-s
 makedepends=('git' 'gcc')
 source=("git+https://github.com/purrlinux/pdwm.git")
 sha256sums=('SKIP')
+install=pdwm.install
 
 build() {
     cd pdwm
@@ -32,7 +33,7 @@ package() {
     install -Dm755 slstatus-1.0/slstatus "$pkgdir/usr/bin/slstatus"
     install -Dm755 st-0.9.2/st "$pkgdir/usr/bin/st"
 
-    install -Dm644 .xinitrc "$pkgdir/etc/skel/.xinitrc"
+    install -Dm644 dwm-6.5/autostart.sh "$pkgdir/usr/share/pdwm/skel/.dwm/autostart.sh"
     install -Dm644 wallpaper.png "$pkgdir/usr/share/pdwm/wallpaper.png"
 
     install -Dm644 dwm-6.5/dwm.1 "$pkgdir/usr/share/man/man1/dwm.1"
