@@ -1,12 +1,12 @@
 pkgname=pdwm
 pkgver=1.0
-pkgrel=25
+pkgrel=26
 pkgdesc="Minimalist dynamic window manager setup"
 arch=('x86_64')
 url="https://github.com/purrlinux/pdwm"
 license=('MIT')
 depends=('xorg-server' 'xorg-xrandr' 'xorg-xsetroot' 'xorg-xinit' 'feh' 'adobe-source-code-pro-fonts')
-makedepends=('git' 'gcc' 'make')
+makedepends=('git' 'gcc' 'make' 'libxft')
 source=("git+https://github.com/purrlinux/pdwm.git")
 sha256sums=('SKIP')
 install=pdwm.install
